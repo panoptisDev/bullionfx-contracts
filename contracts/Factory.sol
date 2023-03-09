@@ -569,9 +569,9 @@ contract BullPair is Initializable, IBullPair, BullERC20 {
                 if (rootK > rootKLast) {
                     uint256 numerator = totalSupply
                         .mul(rootK.sub(rootKLast))
-                        .mul(liquidityFee);
-                    uint256 denominator = rootK.mul(treasuryFee).add(
-                        rootKLast.mul(liquidityFee)
+                        .mul(treasuryFee);
+                    uint256 denominator = rootK.mul(liquidityFee).add(
+                        rootKLast.mul(treasuryFee)
                     );
                     uint256 liquidity = numerator / denominator;
                     if (liquidity > 0) _mint(feeTo, liquidity);
